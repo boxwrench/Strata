@@ -5,6 +5,11 @@ that GLM/Maya kernels can be used unchanged. Model files and engine code were
 not changed. The first useful move is an existing opt-in QSA attention path;
 the next work should follow the measured expert preparation/product costs.
 
+Follow-up: [guarded routed-only gather batching](GYRO_ROUTED_GATHER.md) changes
+engine scheduling behind an opt-in HIP switch. Fresh same-binary tests show
+12–14% short-prompt prefill gains; the initial experiments above remain an
+unchanged-engine comparison. No setup default or model file has been changed.
+
 ## Starting point, 2026-10-11
 
 - Radeon AI PRO R9700, 32 GiB, gfx1201; Ryzen 7 9800X3D, 186 GiB system RAM.

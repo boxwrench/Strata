@@ -20,12 +20,27 @@ HOST = re.compile(
     NUMBER + r') ms, waiting for each chunk (' + NUMBER +
     r') ms, after each chunk \(the draft layer, progress\) (' + NUMBER +
     r') ms, PLE (' + NUMBER + r') ms$')
+DISPATCH = re.compile(
+    r'^strata prefill dispatch: mmq layers (\d+), fp16 layers (\d+), fused layers (\d+), '
+    r'group gathers (\d+), single gathers (\d+), dequant experts (\d+), gather bytes (\d+), '
+    r'(?:resident|routed) grouped layers (\d+)$')
 
 
 def parse_lines(lines):
     records = []
     for line_number, raw in enumerate(lines, 1):
         line = raw.strip()
+        dispatch = DISPATCH.fullmatch(line)
+        if dispatch:
+            if not records or 'dispatch' in records[-1]:
+                raise ValueError(f'Line {line_number}: dispatch without a prefill call')
+            records[-1]['dispatch'] = dict(zip(
+                ('mmq_layers', 'fp16_layers', 'fused_layers', 'group_gathers', 'single_gathers',
+                 'dequant_experts', 'gather_bytes', 'routed_grouped_layers'),
+                map(int, dispatch.groups())))
+            continue
+        if line.startswith('strata prefill dispatch:'):
+            raise ValueError(f'Line {line_number}: unsupported dispatch line')
         match = GPU.fullmatch(line)
         if match:
             tokens, gpu, wall, staging, suffix = match.groups()

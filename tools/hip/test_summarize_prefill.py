@@ -58,6 +58,21 @@ class Tests(unittest.TestCase):
     def test_missing_host_is_valid(self):
         self.assertNotIn('host', parse_lines([LINE])[0])
 
+    def test_dispatch_receipt(self):
+        row = parse_lines([LINE, HOST,
+            'strata prefill dispatch: mmq layers 48, fp16 layers 0, fused layers 0, '
+            'group gathers 100, single gathers 20, dequant experts 0, gather bytes 123456, '
+            'resident grouped layers 41'])[0]
+        self.assertEqual(row['dispatch']['mmq_layers'], 48)
+        self.assertEqual(row['dispatch']['routed_grouped_layers'], 41)
+        self.assertEqual(row['dispatch']['gather_bytes'], 123456)
+
+    def test_orphan_dispatch_rejected(self):
+        with self.assertRaises(ValueError):
+            parse_lines(['strata prefill dispatch: mmq layers 48, fp16 layers 0, fused layers 0, '
+                'group gathers 100, single gathers 20, dequant experts 0, gather bytes 123456, '
+                'resident grouped layers 41'])
+
     def test_cli_filter_and_skip(self):
         with tempfile.TemporaryDirectory() as tmp:
             log = Path(tmp) / 'engine.log'
