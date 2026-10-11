@@ -104,6 +104,12 @@ These attempts remain in the local ledger.
 
 ## Model-card work and limits
 
+Later [rc2 integration and protocol screen](GYRO_RC2_PROTOCOL.md) validates a
+minimal port against the newer staging schedule and runs 128K-configured,
+512-output settings with disclosed substitute prompts. The limits below
+describe the original rc1 study; neither study establishes full 128K-window
+inference or broad quality equivalence.
+
 This is a 16K-context optimization comparison on the October 10 Gyro-S update,
 **not a model-card
 row**. The author's [current guide](https://github.com/agentionai/Strata/blob/rc2/docs/GYRO.md)

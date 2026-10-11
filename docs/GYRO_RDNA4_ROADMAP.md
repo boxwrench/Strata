@@ -10,6 +10,12 @@ engine scheduling behind an opt-in HIP switch. Fresh same-binary tests show
 12–14% short-prompt prefill gains; the initial experiments above remain an
 unchanged-engine comparison. No setup default or model file has been changed.
 
+Follow-up: [rc2 settings-aligned protocol screen](GYRO_RC2_PROTOCOL.md), with
+128K configured context and 512-token replies, repeats +32% 4K / +44.5% 16K
+prefill across OFF/ON/OFF/ON. Exact author prompts are unavailable; substitute
+prompts are published. rc2 staging integration passes focused validation; no
+decode speedup or full 128K-window quality claim follows.
+
 ## Starting point, 2026-10-11
 
 - Radeon AI PRO R9700, 32 GiB, gfx1201; Ryzen 7 9800X3D, 186 GiB system RAM.
