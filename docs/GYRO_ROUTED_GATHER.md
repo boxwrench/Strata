@@ -104,11 +104,13 @@ These attempts remain in the local ledger.
 
 ## Model-card work and limits
 
-This is an older-model, 16K-context optimization comparison, **not a model-card
+This is a 16K-context optimization comparison on the October 10 Gyro-S update,
+**not a model-card
 row**. The author's [current guide](https://github.com/agentionai/Strata/blob/rc2/docs/GYRO.md)
 points to `rc2` and describes the 128K-context, temperature-0.7, 512-new-token,
 three-repeat prose/JSON/code/copy protocol plus 4K/16K real-text prefill.
-Card-compatible work needs current weights and that separate protocol; obtain
+Existing weights are checksum-verified as current; earlier older-weight wording
+was incorrect. Card-compatible work still needs that separate protocol; obtain
 the original prompt text or disclose substitute prompts.
 
 The published 3090 has **24 GB**, caches 15,756 pairs in that run, and uses a
@@ -116,7 +118,7 @@ different CPU/older CPU kernels. It is not a same-capacity, fully-resident
 bandwidth comparison with this R9700. At 128K even the author's 32 GB setup
 caches fewer than all expert pairs.
 
-Not validated: `rc2` integration, updated weights, 128K context, low-VRAM cache
+Not validated: `rc2` integration, 128K context, low-VRAM cache
 stress, mmap/transient expert sources, Windows, other architectures, CUDA,
 multiple devices, images or broad completed-code quality. The HIP-only switch
 stays opt-in; no universal default should follow from this single-card screen.

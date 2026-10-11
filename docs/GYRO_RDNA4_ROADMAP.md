@@ -19,8 +19,11 @@ unchanged-engine comparison. No setup default or model file has been changed.
   `STRATA_PREFILL_MMQ=ON`; agentionai llama.cpp checkout `dc255f2a4b6e4211b555b0c05260b2523281f314`.
   Executable SHA-256: `856e84ef41206ca7637ac246864019eb557e22b0d322b20407a33258072a0598`.
 - Existing Gyro-S download revision `ae0277dbabcbb12944e6887b356bcc1ef1adbafd`.
-  This is **not** the newer October 10 weight update advertised on the current
+  This already contains the October 10 Gyro-S update advertised on the current
   [model card](https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF).
+  Full-file SHA-256: `c6ea1b08ca312f99095b27588ba35976b53f948268e7f91e7761926aa01d9c87`.
+  The earlier older-weight label was incorrect; see the
+  [checksum and pack provenance receipt](../bench/results/2026-10-11-gyro-r9700/model-update-verification.json).
   Keep the model, generated pack and tokenizer together for comparisons.
 - 16,384 context, int8 KV, auto prefill (8,192-token chunk), MTP `--spec 4
   --spec-min-p 0.5`, the existing Strata MTP runtime. All 24,576 expert pairs

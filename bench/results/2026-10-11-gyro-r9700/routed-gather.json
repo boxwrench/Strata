@@ -3,6 +3,7 @@
   "source_sha256": "be2b8619d9c861b371901b0e247362d54cb3fed2ed19217c38e9223fe60475f2",
   "base_commit": "434e136f73a7da2bfd11cde3bb0aa0acaf1328c6",
   "model_revision": "ae0277dbabcbb12944e6887b356bcc1ef1adbafd",
+  "model_sha256": "c6ea1b08ca312f99095b27588ba35976b53f948268e7f91e7761926aa01d9c87",
   "fixed_env": {
     "STRATA_HIP_WMMA": "1",
     "STRATA_PREFILL_STREAM_MIN": "1024",
