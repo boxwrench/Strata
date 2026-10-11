@@ -16,6 +16,12 @@ prefill across OFF/ON/OFF/ON. Exact author prompts are unavailable; substitute
 prompts are published. rc2 staging integration passes focused validation; no
 decode speedup or full 128K-window quality claim follows.
 
+Claude's next lead is screened in the
+[activation-quant/tile audit](GYRO_QUANT_ORDER_LEAD.md): reordered quantization
+passes correctness checks but gives no R9700 gain (-0.84%/-0.39% at ~8K), so
+is not selected. Tile logging finds no smallest-tile/no-tile fallback issue.
+rc2 already has a HIP GDN alternative; test that existing option before a port.
+
 ## Starting point, 2026-10-11
 
 - Radeon AI PRO R9700, 32 GiB, gfx1201; Ryzen 7 9800X3D, 186 GiB system RAM.
